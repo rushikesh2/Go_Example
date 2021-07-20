@@ -1,0 +1,43 @@
+basePath: /user/account
+definitions:
+  main.account:
+    properties:
+      name:
+        type: string
+    type: object
+host: localhost:5000
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a sample serice for managing orders
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Orders API
+  version: "1.0"
+paths:
+  /user/account:
+    get:
+      consumes:
+      - application/json
+      description: Create a new employee with the input paylod
+      parameters:
+      - description: Create employee
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/main.account'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.account'
+      summary: Create a new employee
+      tags:
+      - user
+swagger: "2.0"

@@ -1,0 +1,104 @@
+basePath: /user/account
+definitions:
+  model.Employee:
+    properties:
+      empid:
+        type: string
+      id:
+        type: string
+      mail:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      position:
+        type: string
+      practice:
+        type: string
+      status:
+        type: string
+    type: object
+host: localhost:5000
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a sample serice for managing orders
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Orders API
+  version: "1.0"
+paths:
+  /user/account:
+    get:
+      description: get all employees
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Employee'
+            type: array
+      summary: Show all account
+    post:
+      consumes:
+      - application/json
+      description: Create a new employee with the input paylod
+      parameters:
+      - description: Create employee
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.Employee'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+      summary: Create a new employee
+      tags:
+      - user
+  /user/account/{empid}:
+    delete:
+      description: delete employee by ID
+      operationId: get-string-by-int
+      parameters:
+      - description: empid
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete a employee
+    get:
+      description: get employee by empid
+      operationId: get-string-by-int
+      parameters:
+      - description: empid
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+      summary: Show a account
+swagger: "2.0"
